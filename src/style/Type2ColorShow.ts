@@ -9,7 +9,7 @@ import {
     Position,
     workspace
 } from "vscode";
-import { EXTENSION_ENABLE } from "./constant";
+import { EXTENSION_ENABLE } from "../constant";
 
 class Type2ColorShow implements DocumentColorProvider {
     rgbToHex(rgb: number) {
@@ -49,7 +49,10 @@ class Type2ColorShow implements DocumentColorProvider {
                 sourceCodeArr[line] = sourceCodeArr[line].replace(match[1], (new Array(match[1].length)).fill('*').join(''));
                 let colorCode = new ColorInformation(range, new Color(rgbColor.r / 255, rgbColor.g / 255, rgbColor.b / 255, rgbColor.o / 255));
 
+
+                //添加前置颜色
                 colorArr.push(colorCode);
+
                 match = sourceCodeArr[line].match(regex);
             }
         }

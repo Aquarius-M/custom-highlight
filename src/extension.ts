@@ -2,12 +2,15 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { languages } from 'vscode';
-import Type2ColorShow from './Type2ColorShow';
-import Type1ColorShow from './Type1ColorShow';
-import { on } from 'events';
+
 import { EXTENSION_ENABLE } from './constant';
-import NoneColorShow from './NoneColorShow';
-import Type3ColorShow from './Type3ColorShow';
+import NoneColorShow from './style/NoneColorShow';
+import Type1ColorShow from './style/Type1ColorShow';
+import Type2ColorShow from './style/Type2ColorShow';
+import Type3ColorShow from './style/Type3ColorShow';
+import Type4ColorShow from './style/Type4ColorShow';
+import Type5ColorShow from './style/Type5ColorShow';
+import Type6ColorShow from './style/Type6ColorShow';
 
 const enable_key = EXTENSION_ENABLE;
 
@@ -75,7 +78,28 @@ function onOpen(context: vscode.ExtensionContext) {
 		allFileSelector,
 		new Type3ColorShow(),
 	);
+
+	// 类型4为argb颜色
+	let type4ColorShowDisposable = languages.registerColorProvider(
+		allFileSelector,
+		new Type4ColorShow(),
+	);
+
+	// 类型5为rgbo颜色
+	let type5ColorShowDisposable = languages.registerColorProvider(
+		allFileSelector,
+		new Type5ColorShow(),
+	);
+
+	// 类型5为rgbA颜色
+	let type6ColorShowDisposable = languages.registerColorProvider(
+		allFileSelector,
+		new Type6ColorShow(),
+	);
 	context.subscriptions.push(type1ColorShowDisposable);
 	context.subscriptions.push(type2ColorShowDisposable);
 	context.subscriptions.push(type3ColorShowDisposable);
+	context.subscriptions.push(type4ColorShowDisposable);
+	context.subscriptions.push(type5ColorShowDisposable);
+	context.subscriptions.push(type6ColorShowDisposable);
 }
