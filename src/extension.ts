@@ -96,6 +96,13 @@ function onOpen(context: vscode.ExtensionContext) {
 		allFileSelector,
 		new Type6ColorShow(),
 	);
+
+	// HSL hsla(0, 100%, 50%, 1)
+	// HWB hwb(194 0% 0% / .5) 
+	// LAB lab(80% -80 -100 / .5)
+	// LCH lch(80% 100 50 / .5)
+	// CMYK device-cmyk(1 0 0 0)
+	
 	context.subscriptions.push(type1ColorShowDisposable);
 	context.subscriptions.push(type2ColorShowDisposable);
 	context.subscriptions.push(type3ColorShowDisposable);
